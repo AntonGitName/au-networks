@@ -27,14 +27,12 @@ public:
 
     void recv(void *buf, size_t size) override;
 
-    ~tcp_client_socket() override;
-
     void connect() override;
 
 private:
-    int client_socket_fd;
-    std::unique_ptr<stream_socket> server_socket;
+    std::unique_ptr<tcp_accepted_socket> client_socket;
 
     const std::string &hostname;
     const int port;
+    int client_socket_fd;
 };

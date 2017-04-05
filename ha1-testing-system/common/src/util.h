@@ -28,5 +28,9 @@ namespace util {
 
     int read_int_from_bytes(const char *bytes, size_t length) throw(serialization_exception);
 
+    std::vector<char> int_to_bytes(int x);
+
+    int bytes_to_int(const char *x);
+
     std::string read_string_from_bytes(const char *bytes, size_t buffer, size_t length)  throw(serialization_exception);
 }

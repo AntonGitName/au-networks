@@ -2,6 +2,7 @@
 // Created by antonpp on 05.04.17.
 //
 
+#include <iostream>
 #include "tcp_accepted_socket.h"
 
 tcp_accepted_socket::tcp_accepted_socket(int socket_fd) : socket_fd(socket_fd) {}

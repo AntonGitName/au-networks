@@ -26,7 +26,32 @@ int main(int argc, const char **argv) {
             return 1;
         }
     }
-    client client(host, port);
+
+    try {
+        client client(host, port);
+
+        std::cout << std::endl << "Type `help` to see list of commands." << std::endl;
+
+        for (;;) {
+            std::cout << "> ";
+            std::string str;
+//            std::cin >> str;
+            std::getline(std::cin, str);
+            if (str == "start") {
+                client.start_test();
+            } else if (str == "next") {
+                client.next_question();
+            } else if (str == "results") {
+                client.get_test_results();
+            } else if (str == "answer") {
+//                client.get_test_results();
+            } else {
+
+            }
+        }
+    } catch (network_exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 
     return 0;
 }

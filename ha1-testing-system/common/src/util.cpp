@@ -59,11 +59,7 @@ namespace util {
         if (length != 4) {
             throw serialization_exception("Int size must be exactly 4 bytes");
         }
-        int_or_bytes tmp;
-        for (int i = 0; i < 4; ++i) {
-            tmp.b[i] = bytes[i];
-        }
-        return tmp.x;
+        return bytes_to_int(bytes);
     }
 
     std::string
@@ -72,5 +68,23 @@ namespace util {
             throw serialization_exception("Not enough bytes for string");
         }
         return std::string(bytes, bytes + length);
+    }
+
+    std::vector<char> int_to_bytes(int x) {
+        std::vector<char> v;
+        int_or_bytes tmp;
+        tmp.x = x;
+        for (int i = 0; i < 4; ++i) {
+            v.push_back(tmp.b[i]);
+        }
+        return v;
+    }
+
+    int bytes_to_int(const char *x) {
+        int_or_bytes tmp;
+        for (int i = 0; i < 4; ++i) {
+            tmp.b[i] = x[i];
+        }
+        return tmp.x;
     }
 }

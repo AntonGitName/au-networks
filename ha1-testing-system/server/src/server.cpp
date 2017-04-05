@@ -2,6 +2,7 @@
 // Created by antonpp on 05.04.17.
 //
 
+#include <src/protocol.h>
 #include "server.h"
 
 server::server(std::string hostname, int port) {
@@ -35,7 +36,15 @@ server::~server() {
 
 void server::handle_connection(std::unique_ptr<stream_socket> client_socket) {
     print_to_console("Received new connection.");
-    // TODO
+    try {
+        while (true) {
+            auto data = protocol::receive(client_socket.get());
+            print_to_console("Received msg");
+        }
+    } catch (network_exception &e) {
+        print_to_console(e.what());
+        print_to_console("Connection lost.");
+    }
 }
 
 void server::print_to_console(const std::string &msg) {
