@@ -22,7 +22,7 @@ private:
 
     void print_to_console(const std::string &msg);
 
-    std::shared_ptr<tcp_server_socket> _socket;
+    std::shared_ptr<stream_server_socket> _socket;
     std::shared_ptr<std::thread> _listen_thread;
     bool running = true;
 

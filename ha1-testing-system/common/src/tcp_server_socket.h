@@ -6,14 +6,12 @@
 
 
 #include <string>
-#include <sys/types.h>
 #include <sys/socket.h>
 #include <unistd.h>
-#include <arpa/inet.h>
-#include <netdb.h>
 #include <memory.h>
 
 #include "stream_socket.h"
+#include "util.h"
 #include "network_exception.h"
 #include "tcp_accepted_socket.h"
 

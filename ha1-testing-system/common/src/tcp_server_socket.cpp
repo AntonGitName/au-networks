@@ -16,30 +16,10 @@ tcp_server_socket::tcp_server_socket(const std::string &host, int port) throw(se
     if (socket_fd < 0) {
         throw server_socket_exception("Could not open socket");
     }
-    // set host
-    sockaddr_in server_address;
-    memset(&server_address, '0', sizeof(server_address));
-    server_address.sin_family = AF_INET;
-    if (inet_pton(AF_INET, host.c_str(), &server_address.sin_addr) <= 0) {
-        char ip[32];
-        if (auto he = gethostbyname(host.c_str())) {
-            auto addr_list = he->h_addr_list;
-
-            strcpy(ip, addr_list[0]);
-            if (addr_list[1]) {
-                throw server_socket_exception("Provided more then one host names");
-            }
-        } else {
-            throw server_socket_exception("Couldn't resolve hostname");
-        }
-        if (inet_pton(AF_INET, ip, &server_address.sin_addr) <= 0) {
-            throw server_socket_exception("Failed to set specified hostname");
-        }
-    }
-    // set port
-    server_address.sin_port = htons((uint16_t) port);
+    // get address
+    auto server_address = util::create_socket_address(host, port);
     // bind
-    if (bind(socket_fd, (struct sockaddr *) &server_address, sizeof(server_address)) < 0) {
+    if (bind(socket_fd, (sockaddr *) &server_address, sizeof(server_address)) < 0) {
         throw server_socket_exception("Could not bind new socket to specified host/port");
     }
 

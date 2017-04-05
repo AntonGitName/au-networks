@@ -2,20 +2,16 @@
 
 #include "server.h"
 
-namespace {
-    const std::string DEFAULT_HOST = "127.0.0.1";
-    const int DEFAULT_PORT = 40001;
-}
 
-void usage() {
-    std::cout << "USAGE: "
-            "         server [host [port]]";
+void usage(const std::string &bin_name) {
+    std::cout << "USAGE: \n"
+                         "         " + bin_name + " [host [port]]";
 }
 
 int main(int argc, const char **argv) {
 
-    std::string host = DEFAULT_HOST;
-    int port = DEFAULT_PORT;
+    std::string host = util::DEFAULT_HOST;
+    int port = util::DEFAULT_PORT;
 
 
     if (argc > 1) {
@@ -23,7 +19,7 @@ int main(int argc, const char **argv) {
         if (argc == 3) {
             port = std::stoi(argv[2]);
         } else {
-            usage();
+            usage(argv[0]);
             return 1;
         }
     }
