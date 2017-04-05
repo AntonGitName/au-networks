@@ -2,8 +2,7 @@
 // Created by antonpp on 05.04.17.
 //
 
-#ifndef HA1_TESTING_SYSTEM_NETWORK_EXCEPTION_H
-#define HA1_TESTING_SYSTEM_NETWORK_EXCEPTION_H
+#pragma once
 
 
 #include <exception>
@@ -19,6 +18,3 @@ private:
     const std::string msg;
 
 };
-
-
-#endif //HA1_TESTING_SYSTEM_NETWORK_EXCEPTION_H

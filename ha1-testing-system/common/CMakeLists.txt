@@ -1,6 +1,8 @@
 set(SOURCE_FILES src/tcp_accepted_socket.cpp src/tcp_server_socket.cpp
         src/network_exception.cpp src/tcp_client_socket.cpp
-        src/tcp_client_socket.h src/util.cpp src/util.h)
+        src/util.cpp
+        src/protocol.cpp
+        src/serializable.cpp)
 
 add_library(common64 ${SOURCE_FILES})
 set_target_properties(common64 PROPERTIES COMPILE_FLAGS "-m64" LINK_FLAGS "-m64")

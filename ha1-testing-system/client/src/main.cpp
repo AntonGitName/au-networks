@@ -27,5 +27,6 @@ int main(int argc, const char **argv) {
         }
     }
     client client(host, port);
+
     return 0;
 }
