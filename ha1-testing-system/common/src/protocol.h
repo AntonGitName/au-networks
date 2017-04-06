@@ -51,6 +51,10 @@ namespace protocol {
         }
 
         static std::shared_ptr<client_message> deserialize(const char *data, size_t length);
+
+        static std::shared_ptr<client_message> deserialize(const std::vector<char> &data) {
+            return deserialize(data.data(), data.size());
+        }
     };
 
     struct start_message : client_message {
@@ -102,6 +106,10 @@ namespace protocol {
         }
 
         static std::shared_ptr<server_message> deserialize(const char *data, size_t length);
+
+        static std::shared_ptr<server_message> deserialize(const std::vector<char> &data) {
+            return deserialize(data.data(), data.size());
+        }
     };
 
     struct question_message : server_message {

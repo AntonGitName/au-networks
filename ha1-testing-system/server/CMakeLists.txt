@@ -1,4 +1,4 @@
-set(SOURCE_FILES src/main.cpp src/server.cpp src/server.h)
+set(SOURCE_FILES src/main.cpp src/server.cpp src/server.h src/question_session.cpp src/question_session.h)
 
 include_directories(../common ../common/src)
 

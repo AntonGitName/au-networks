@@ -10,6 +10,8 @@
 #include <thread>
 
 #include "tcp_server_socket.h"
+#include "protocol.h"
+#include "question_session.h"
 
 class server {
 public:

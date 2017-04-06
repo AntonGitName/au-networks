@@ -8,6 +8,10 @@ void usage(const std::string &bin_name) {
                          "         " + bin_name + " [host [port]]";
 }
 
+void help() {
+    std::cout << std::endl << "Type `stop` to stop the server." << std::endl;
+}
+
 int main(int argc, const char **argv) {
 
     std::string host = util::DEFAULT_HOST;
@@ -27,7 +31,7 @@ int main(int argc, const char **argv) {
     try {
         server server(host, port);
 
-        std::cout << std::endl << "Type `stop` to stop the server." << std::endl;
+        help();
 
         for (;;) {
             std::cout << "> ";
@@ -36,6 +40,8 @@ int main(int argc, const char **argv) {
             std::getline(std::cin, str);
             if (str == "stop") {
                 break;
+            } else {
+                help();
             }
         }
     } catch (network_exception &e) {
