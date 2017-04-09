@@ -26,6 +26,6 @@ private:
 
     std::shared_ptr<stream_server_socket> _socket;
     std::shared_ptr<std::thread> _listen_thread;
-    bool running = true;
+    volatile int running = 1;
 
 };

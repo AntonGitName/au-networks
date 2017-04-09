@@ -29,7 +29,7 @@ server::server(std::string hostname, int port) {
 }
 
 server::~server() {
-    running = false;
+    running = 0;
     _socket.reset();
     // Not sure how to shutdown thread properly. This approach can hang an application
     // if closing socket does not wake up blocked on `accept` method thread for some reason.

@@ -16,8 +16,8 @@ void help() {
             " start     = start new test\n"
             " next      = request next question\n"
             " answer N  = send answer for the last question\n"
-            " result    = show current results\n"
-            " exit      = quit application";
+            " results   = show current results\n"
+            " exit      = quit application\n";
 }
 
 std::string verdict_to_str(protocol::question_verdict v) {
@@ -53,7 +53,7 @@ int main(int argc, const char **argv) {
         std::cout << std::endl << "Type `help` to see list of available commands." << std::endl;
 
         for (;;) {
-//            std::cout << "> ";
+            std::cout << "> ";
             std::string str;
             std::cin >> str;
 //            std::getline(std::cin, str);
